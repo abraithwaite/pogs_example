@@ -14,7 +14,7 @@ type Phone struct {
 }
 
 type User struct {
-	Ph   Phone `capnp:"phone"`
+	Ph   Phone `capnp:"which=phone"`
 	Id   int64
 	Name string
 }
