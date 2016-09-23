@@ -14,9 +14,9 @@ type Phone struct {
 }
 
 type User struct {
-	Phone Phone
-	Id    int64
-	Name  string
+	Ph   Phone `capnp:",which=phone"`
+	Id   int64
+	Name string
 }
 
 func main() {
@@ -47,5 +47,5 @@ func main() {
 	err = pogs.Extract(u, users.User_TypeID, usr.Struct)
 	fmt.Println("error:", err)
 	fmt.Println(u)
-	fmt.Println(u.Phone.Location)
+	fmt.Println(u.Ph.Location)
 }
