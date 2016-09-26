@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/abraithwaite/pogs_example"
+	schema "github.com/abraithwaite/pogs_example"
 	capnp "zombiezen.com/go/capnproto2"
 	"zombiezen.com/go/capnproto2/pogs"
 )
@@ -24,13 +24,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	usr, err := users.NewRootUser(seg)
+	usr, err := schema.NewRootUser(seg)
 	if err != nil {
 		panic(err)
 	}
 	usr.SetName("Alan")
 	usr.SetId(12412)
-	phone, err := users.NewPhone(seg)
+	phone, err := schema.NewPhone(seg)
 	if err != nil {
 		panic(err)
 	}
@@ -44,7 +44,7 @@ func main() {
 	fmt.Println(loc)
 
 	u := new(User)
-	err = pogs.Extract(u, users.User_TypeID, usr.Struct)
+	err = pogs.Extract(u, schema.User_TypeID, usr.Struct)
 	fmt.Println("error:", err)
 	fmt.Println(u)
 	fmt.Println(u.Which.Location)

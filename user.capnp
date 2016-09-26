@@ -10,9 +10,17 @@ struct Phone {
     location @1 :Text;
 }
 
+struct Address {
+    number @0 :Text;
+    street @1 :Text;
+    zipCode @2 :Int32;
+}
 
 struct User {
     id @0 :Int64;
     name @1 :Text;
-    phone @2 :Phone;
+    union {
+        phone @2 :Phone;
+        address @3 :Address;
+    }
 }
